@@ -10,7 +10,6 @@ import {DashboardLayout} from '@toolpad/core/DashboardLayout';
 import {PageContainer} from '@toolpad/core/PageContainer';
 import Grid from '@mui/material/Grid';
 import Footer from "../Footer/Footer";
-import {useState} from "react";
 
 const NAVIGATION = [
     {
@@ -104,54 +103,54 @@ export default function DashboardLayoutBasic(props) {
     const demoWindow = window ? window() : undefined;
 
     return (
-        <AppProvider
-            navigation={NAVIGATION}
-            router={router}
-            theme={demoTheme}
-            window={demoWindow}
-        >
-            <DashboardLayout sx={{width: '100%'}}>
-                <PageContainer>
-                    <Grid container spacing={1}>
-                        <Grid size={5}/>
-                        <Grid size={12}>
-                            <Skeleton height={14}/>
-                        </Grid>
-                        <Grid size={12}>
-                            <Skeleton height={14}/>
-                        </Grid>
-                        <Grid size={4}>
-                            <Skeleton height={100}/>
-                        </Grid>
-                        <Grid size={8}>
-                            <Skeleton height={100}/>
-                        </Grid>
+        <ThemeProvider theme={demoTheme}>
+            <AppProvider
+                navigation={NAVIGATION}
+                router={router}
+                theme={demoTheme}
+                window={demoWindow}
+            >
+                <DashboardLayout sx={{width: '100%'}}>
+                    <PageContainer>
+                        <Grid container spacing={1}>
+                            <Grid size={5}/>
+                            <Grid size={12}>
+                                <Skeleton height={14}/>
+                            </Grid>
+                            <Grid size={12}>
+                                <Skeleton height={14}/>
+                            </Grid>
+                            <Grid size={4}>
+                                <Skeleton height={100}/>
+                            </Grid>
+                            <Grid size={8}>
+                                <Skeleton height={100}/>
+                            </Grid>
 
-                        <Grid size={12}>
-                            <Skeleton height={150}/>
-                        </Grid>
-                        <Grid size={12}>
-                            <Skeleton height={14}/>
-                        </Grid>
+                            <Grid size={12}>
+                                <Skeleton height={150}/>
+                            </Grid>
+                            <Grid size={12}>
+                                <Skeleton height={14}/>
+                            </Grid>
 
-                        <Grid size={3}>
-                            <Skeleton height={100}/>
+                            <Grid size={3}>
+                                <Skeleton height={100}/>
+                            </Grid>
+                            <Grid size={3}>
+                                <Skeleton height={100}/>
+                            </Grid>
+                            <Grid size={3}>
+                                <Skeleton height={100}/>
+                            </Grid>
+                            <Grid size={3}>
+                                <Skeleton height={100}/>
+                            </Grid>
                         </Grid>
-                        <Grid size={3}>
-                            <Skeleton height={100}/>
-                        </Grid>
-                        <Grid size={3}>
-                            <Skeleton height={100}/>
-                        </Grid>
-                        <Grid size={3}>
-                            <Skeleton height={100}/>
-                        </Grid>
-                    </Grid>
-                </PageContainer>
-            </DashboardLayout>
-            <ThemeProvider theme={demoTheme}>
-                <Footer/>
-            </ThemeProvider>
-        </AppProvider>
+                    </PageContainer>
+                </DashboardLayout>
+            </AppProvider>
+            <Footer/>
+        </ThemeProvider>
     );
 }

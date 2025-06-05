@@ -1,6 +1,5 @@
 import Dashboard from "./containers/Dashboard/Dashboard";
 import './App.css';
-import Footer from "./containers/Footer/Footer";
 import * as React from "react";
 
 
