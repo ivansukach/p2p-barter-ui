@@ -5,11 +5,17 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import DescriptionIcon from '@mui/icons-material/Description';
 import LayersIcon from '@mui/icons-material/Layers';
+import SearchIcon from '@mui/icons-material/Search';
+import IconButton from '@mui/material/IconButton';
 import {AppProvider} from '@toolpad/core/AppProvider';
-import {DashboardLayout} from '@toolpad/core/DashboardLayout';
+import {DashboardLayout, ThemeSwitcher} from '@toolpad/core/DashboardLayout';
 import {PageContainer} from '@toolpad/core/PageContainer';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Tooltip from '@mui/material/Tooltip';
 import Grid from '@mui/material/Grid';
 import Footer from "../Footer/Footer";
+import logo from "../../assets/p2pbarter-slim-transparent.png";
 
 const NAVIGATION = [
     {
@@ -22,8 +28,25 @@ const NAVIGATION = [
         icon: <DashboardIcon/>,
     },
     {
-        segment: 'orders',
-        title: 'Orders',
+        segment: 'account',
+        title: 'Account Settings',
+        icon: <DashboardIcon/>,
+    },
+    {
+        kind: 'divider',
+    },
+    {
+        kind: 'header',
+        title: 'Wallet',
+    },
+    {
+        segment: 'controlPanel',
+        title: 'Control Panel',
+        icon: <ShoppingCartIcon/>,
+    },
+    {
+        segment: 'transactions',
+        title: 'Transaction History',
         icon: <ShoppingCartIcon/>,
     },
     {
@@ -31,7 +54,22 @@ const NAVIGATION = [
     },
     {
         kind: 'header',
-        title: 'Analytics',
+        title: 'Chain Explorer',
+    },
+    {
+        segment: 'blocks',
+        title: 'Blocks',
+        icon: <ShoppingCartIcon/>,
+    },
+    {
+        segment: 'transactions',
+        title: 'Transactions',
+        icon: <ShoppingCartIcon/>,
+    },
+    {
+        segment: 'validators',
+        title: 'Validators',
+        icon: <ShoppingCartIcon/>,
     },
     {
         segment: 'reports',
@@ -94,10 +132,72 @@ const Skeleton = styled('div')(({theme, height}) => ({
     content: '" "',
 }));
 
+function ToolbarActionsSearch() {
+    return (
+        <Stack direction="row">
+            <Tooltip title="Search" enterDelay={1000}>
+                <div>
+                    <IconButton
+                        type="button"
+                        aria-label="search"
+                        sx={{
+                            display: { xs: 'inline', md: 'none' },
+                        }}
+                    >
+                        <SearchIcon />
+                    </IconButton>
+                </div>
+            </Tooltip>
+            <TextField
+                label="Search"
+                variant="outlined"
+                size="small"
+                slotProps={{
+                    input: {
+                        endAdornment: (
+                            <IconButton type="button" aria-label="search" size="small">
+                                <SearchIcon />
+                            </IconButton>
+                        ),
+                        sx: { pr: 0.5 },
+                    },
+                }}
+                sx={{ display: { xs: 'none', md: 'inline-block' }, mr: 1 }}
+            />
+            <ThemeSwitcher />
+        </Stack>
+    );
+}
+
 export default function DashboardLayoutBasic(props) {
     const {window} = props;
 
     const router = useDemoRouter('/dashboard');
+
+    const [session, setSession] = React.useState({
+        user: {
+            name: 'Bharat Kashyap',
+            email: 'bharatkashyap@outlook.com',
+            image: 'https://avatars.githubusercontent.com/u/19550456',
+        },
+    });
+
+    const authentication = React.useMemo(() => {
+        return {
+            signIn: () => {
+                setSession({
+                    user: {
+                        name: 'Bharat Kashyap',
+                        email: 'bharatkashyap@outlook.com',
+                        image: 'https://avatars.githubusercontent.com/u/19550456',
+                    },
+                });
+            },
+            signOut: () => {
+                setSession(null);
+            },
+        };
+    }, []);
 
     // Remove this const when copying and pasting into your project.
     const demoWindow = window ? window() : undefined;
@@ -106,11 +206,23 @@ export default function DashboardLayoutBasic(props) {
         <ThemeProvider theme={demoTheme}>
             <AppProvider
                 navigation={NAVIGATION}
+                session={session}
+                authentication={authentication}
                 router={router}
                 theme={demoTheme}
                 window={demoWindow}
             >
-                <DashboardLayout sx={{width: '100%'}}>
+                <DashboardLayout
+                    branding={{
+                        logo: <img src={logo} alt="P2P logo" />,
+                        title: '',
+                        homeUrl: '/',
+                    }}
+                    slots={{
+                        toolbarActions: ToolbarActionsSearch,
+                    }}
+                    sx={{ width: '100%' }}
+                >
                     <PageContainer>
                         <Grid container spacing={1}>
                             <Grid size={5}/>
