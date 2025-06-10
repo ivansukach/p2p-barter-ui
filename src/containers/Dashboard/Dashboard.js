@@ -7,6 +7,13 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import LayersIcon from '@mui/icons-material/Layers';
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
+import FactCheckIcon from '@mui/icons-material/FactCheck';
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+import BallotIcon from '@mui/icons-material/Ballot';
+import AssignmentAddIcon from '@mui/icons-material/AssignmentAdd';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import BlocksIcon from '../../assets/navigation/BlocksIcon';
+import TransactionsIcon from '../../assets/navigation/TransactionsIcon';
 import {AppProvider} from '@toolpad/core/AppProvider';
 import {DashboardLayout, ThemeSwitcher} from '@toolpad/core/DashboardLayout';
 import {PageContainer} from '@toolpad/core/PageContainer';
@@ -14,22 +21,13 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
 import Grid from '@mui/material/Grid';
-import Footer from "../Footer/Footer";
-import logo from "../../assets/p2pbarter-slim-transparent.png";
+import Footer from '../Footer/Footer';
+import logo from '../../assets/p2pbarter-slim-transparent.png';
 
 const NAVIGATION = [
     {
-        kind: 'header',
-        title: 'Main items',
-    },
-    {
         segment: 'dashboard',
         title: 'Dashboard',
-        icon: <DashboardIcon/>,
-    },
-    {
-        segment: 'account',
-        title: 'Account Settings',
         icon: <DashboardIcon/>,
     },
     {
@@ -42,12 +40,12 @@ const NAVIGATION = [
     {
         segment: 'controlPanel',
         title: 'Control Panel',
-        icon: <ShoppingCartIcon/>,
+        icon: <AddBoxIcon/>,
     },
     {
-        segment: 'transactions',
+        segment: 'transactionHistory',
         title: 'Transaction History',
-        icon: <ShoppingCartIcon/>,
+        icon: <ReceiptLongIcon/>,
     },
     {
         kind: 'divider',
@@ -59,17 +57,17 @@ const NAVIGATION = [
     {
         segment: 'blocks',
         title: 'Blocks',
-        icon: <ShoppingCartIcon/>,
+        icon: <BlocksIcon/>,
     },
     {
         segment: 'transactions',
         title: 'Transactions',
-        icon: <ShoppingCartIcon/>,
+        icon: <TransactionsIcon/>,
     },
     {
         segment: 'validators',
         title: 'Validators',
-        icon: <ShoppingCartIcon/>,
+        icon: <FactCheckIcon/>,
     },
     {
         segment: 'reports',
@@ -92,6 +90,23 @@ const NAVIGATION = [
         segment: 'integrations',
         title: 'Integrations',
         icon: <LayersIcon/>,
+    },
+    {
+        kind: 'divider',
+    },
+    {
+        kind: 'header',
+        title: 'Governance',
+    },
+    {
+        segment: 'newGovernanceProposal',
+        title: 'Governance proposal',
+        icon: <AssignmentAddIcon/>,
+    },
+    {
+        segment: 'governancePolls',
+        title: 'Governance polls',
+        icon: <BallotIcon/>,
     },
 ];
 
