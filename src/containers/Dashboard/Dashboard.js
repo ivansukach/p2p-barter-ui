@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {createTheme, styled, ThemeProvider} from '@mui/material/styles';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import DescriptionIcon from '@mui/icons-material/Description';
 import LayersIcon from '@mui/icons-material/Layers';
@@ -23,6 +22,8 @@ import Tooltip from '@mui/material/Tooltip';
 import Grid from '@mui/material/Grid';
 import Footer from '../Footer/Footer';
 import logo from '../../assets/p2pbarter-slim-transparent.png';
+import DashboardContent from '../../components/Dashboard/DashboardContent';
+import Chart from "../../components/common/Chart/Chart";
 
 const NAVIGATION = [
     {
@@ -236,16 +237,19 @@ export default function DashboardLayoutBasic(props) {
                     slots={{
                         toolbarActions: ToolbarActionsSearch,
                     }}
-                    sx={{ width: '100%' }}
+                    sx={{ width: '100%', height: "auto" }}
                 >
                     <PageContainer>
                         <Grid container spacing={1}>
                             <Grid size={5}/>
                             <Grid size={12}>
-                                <Skeleton height={14}/>
+                                <Chart />
                             </Grid>
                             <Grid size={12}>
                                 <Skeleton height={14}/>
+                            </Grid>
+                            <Grid size={24}>
+                                <Skeleton height={300}/>
                             </Grid>
                             <Grid size={4}>
                                 <Skeleton height={100}/>
