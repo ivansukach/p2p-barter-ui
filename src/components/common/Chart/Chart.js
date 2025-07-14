@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
+import {useTheme} from "@mui/material";
 
 let symbol = ["BTC"];
 
@@ -20,6 +21,8 @@ function Chart() {
         data: null,
         price: null,
     });
+
+    const theme = useTheme();
 
     useEffect(() => {
         setAppState({loading: true});
@@ -50,7 +53,7 @@ function Chart() {
 
     const options = {
         chart: {
-            backgroundColor: "white",
+            backgroundColor: 'var(--mui-palette-background-paper)',
             type: "area",
             height: "500px",
             margin: [20, 50, 50, 50],
@@ -62,13 +65,8 @@ function Chart() {
                 fillColor: {
                     linearGradient: [0, 0, 0, 300],
                     stops: [
-                        [0, Highcharts.getOptions().colors[0]],
-                        [
-                            1,
-                            Highcharts.color(Highcharts.getOptions().colors[0])
-                                .setOpacity(0)
-                                .get("rgba"),
-                        ],
+                        [0, Highcharts.color(theme.palette.primary.light).get("rgba")],
+                        [1, Highcharts.color(theme.palette.primary.dark).setOpacity(0).get("rgba")],
                     ],
                 },
             },
@@ -82,6 +80,30 @@ function Chart() {
                 },
             },
         ],
+        xAxis: {
+            gridLineWidth: 1,
+            gridLineColor: 'var(--mui-palette-divider)',
+            gridLineDashStyle: 'Dot',
+            lineColor: 'var(--mui-palette-divider)',
+            tickColor: 'var(--mui-palette-divider)',
+            labels: {
+                style: {
+                    color: 'var(--mui-palette-text-primary)',
+                }
+            },
+        },
+        yAxis: {
+            gridLineWidth: 1,
+            gridLineColor: 'var(--mui-palette-divider)',
+            gridLineDashStyle: 'Dot',
+            lineColor: 'var(--mui-palette-divider)',
+            tickColor: 'var(--mui-palette-divider)',
+            labels: {
+                style: {
+                    color: 'var(--mui-palette-text-primary)',
+                }
+            },
+        },
         navigator: {
             enabled: false
         },

@@ -180,7 +180,7 @@ function ToolbarActionsSearch() {
                 }}
                 sx={{ display: { xs: 'none', md: 'inline-block' }, mr: 1 }}
             />
-            <ThemeSwitcher />
+            <ThemeSwitcher/>
         </Stack>
     );
 }
@@ -197,6 +197,8 @@ export default function DashboardLayoutBasic(props) {
             image: 'https://avatars.githubusercontent.com/u/19550456',
         },
     });
+
+
 
     const authentication = React.useMemo(() => {
         return {
@@ -219,7 +221,7 @@ export default function DashboardLayoutBasic(props) {
     const demoWindow = window ? window() : undefined;
 
     return (
-        <ThemeProvider theme={demoTheme}>
+        <ThemeProvider theme={demoTheme} defaultMode='dark'>
             <AppProvider
                 navigation={NAVIGATION}
                 session={session}
@@ -243,7 +245,7 @@ export default function DashboardLayoutBasic(props) {
                         <Grid container spacing={1}>
                             <Grid size={5}/>
                             <Grid size={12}>
-                                <Chart />
+                                <Chart theme={demoTheme} mode={demoTheme.palette.mode}/>
                             </Grid>
                             <Grid size={12}>
                                 <Skeleton height={14}/>

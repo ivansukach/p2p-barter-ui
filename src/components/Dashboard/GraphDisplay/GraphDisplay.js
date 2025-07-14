@@ -2,7 +2,6 @@ import * as React from "react";
 import "./GraphDisplay.css";
 import {AreaChart, ResponsiveContainer, Tooltip, Area, XAxis, YAxis, CartesianGrid } from "recharts";
 import Chart from "../../common/Chart/Chart";
-import ChartContent from "../../common/ChartContent/Chart";
 
 export default function (props) {
     const [showPrice, setShowPrice] = React.useState(true);
