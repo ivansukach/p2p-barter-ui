@@ -56,7 +56,7 @@ function Chart() {
             backgroundColor: 'var(--mui-palette-background-paper)',
             type: "area",
             height: "500px",
-            margin: [20, 50, 50, 50],
+            margin: [20, 0, 50, 0],
             spacing: [0, 0, 0, 0], // [top, right, bottom, left]
             panning: false,
         },

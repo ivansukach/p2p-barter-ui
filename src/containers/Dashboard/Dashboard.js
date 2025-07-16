@@ -24,6 +24,9 @@ import Footer from '../Footer/Footer';
 import logo from '../../assets/p2pbarter-slim-transparent.png';
 import DashboardContent from '../../components/Dashboard/DashboardContent';
 import Chart from "../../components/common/Chart/Chart";
+import BlocksDisplay from "../../components/Dashboard/BlockDisplay/BlockDisplay";
+import TxDisplay from "../../components/Dashboard/TxDisplay/TxDisplay";
+import ValidatorsDisplay from "../../components/Dashboard/ValidatorsDisplay/ValidatorsDisplay";
 
 const NAVIGATION = [
     {
@@ -242,20 +245,23 @@ export default function DashboardLayoutBasic(props) {
                     sx={{ width: '100%', height: "auto" }}
                 >
                     <PageContainer>
-                        <Grid container spacing={1}>
-                            <Grid size={5}/>
+                        <Grid container rowSpacing={4} columnSpacing={2}>
                             <Grid size={12}>
                                 <Chart theme={demoTheme} mode={demoTheme.palette.mode}/>
                             </Grid>
-                            <Grid size={12}>
-                                <Skeleton height={14}/>
+                            <Grid size={6}>
+                                <TxDisplay/>
                             </Grid>
-                            <Grid size={24}>
-                                <Skeleton height={300}/>
+                            <Grid size={6}>
+                                <BlocksDisplay/>
+                            </Grid>
+                            <Grid size={12}>
+                                <ValidatorsDisplay/>
                             </Grid>
                             <Grid size={4}>
                                 <Skeleton height={100}/>
                             </Grid>
+                            <Grid size={5}/>
                             <Grid size={8}>
                                 <Skeleton height={100}/>
                             </Grid>
