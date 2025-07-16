@@ -13,8 +13,16 @@ const rows = [
     createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
+const columns = [
+    {name: "Desert", key: "name"},
+    {name: "Calories", key: "calories"},
+    {name: "Fat", key: "fat"},
+    {name: "Carbs", key: "carbs"},
+    {name: "Protein", key: "protein"}
+]
+
 export default function(props) {
     return (
-        <BasicTable rows={rows}/>
+        <BasicTable rows={rows} columns={columns}/>
     );
 }

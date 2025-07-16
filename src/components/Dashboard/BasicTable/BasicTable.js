@@ -8,31 +8,32 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 export default function BasicTable(props) {
+    const leftAlignColumn = props.columns[0];
+    const rightAlignColumns = props.columns.slice(1);
+    console.log("Left Align Column", leftAlignColumn);
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">Calories</TableCell>
-                        <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                        <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                        <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                        <TableCell>{leftAlignColumn.name}</TableCell>
+                        {rightAlignColumns.map((column) => (
+                        <TableCell align="right">{column.name}</TableCell>
+                        ))}
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {props.rows.map((row) => (
                         <TableRow
-                            key={row.name}
+                            key={leftAlignColumn.key}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                {row.name}
+                                {row[leftAlignColumn.key]}
                             </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right">{row.carbs}</TableCell>
-                            <TableCell align="right">{row.protein}</TableCell>
+                            {rightAlignColumns.map((column) => (
+                            <TableCell align="right">{row[column.key]}</TableCell>
+                            ))}
                         </TableRow>
                     ))}
                 </TableBody>
